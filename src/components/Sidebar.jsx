@@ -1,8 +1,7 @@
 import { GrTask } from "react-icons/gr";
-import { MdDashboard, MdOutlineTaskAlt, MdAddTask } from "react-icons/md";
+import { MdDashboard, MdOutlineTaskAlt, MdAddTask, MdPendingActions, MdCloudDone, MdOutlineAccessTimeFilled, MdQueryStats } from "react-icons/md";
 import { GrInProgress } from "react-icons/gr";
 import { Link } from "react-router-dom";
-
 
 const Sidebar = () => {
     return (
@@ -32,6 +31,14 @@ const Sidebar = () => {
                         </span>
                     </Link>
                     <Link to='/inProgressTask' className="px-6 py-4 font-semibold text-lg text-gray-300 hover:text-gray-700 cursor-pointer flex justify-start items-center gap-2">
+                        <MdPendingActions className="text-2xl" />
+                        <span className='sm:block hidden'>
+
+                            Pending Tasks
+
+                        </span>
+                    </Link>
+                    <Link to='/inProgressTask' className="px-6 py-4 font-semibold text-lg text-gray-300 hover:text-gray-700 cursor-pointer flex justify-start items-center gap-2">
                         <GrInProgress className="text-2xl" />
                         <span className='sm:block hidden'>
 
@@ -39,11 +46,36 @@ const Sidebar = () => {
 
                         </span>
                     </Link>
+                    <Link to='/inProgressTask' className="px-6 py-4 font-semibold text-lg text-gray-300 hover:text-gray-700 cursor-pointer flex justify-start items-center gap-2">
+                        <MdCloudDone className="text-2xl" />
+                        <span className='sm:block hidden'>
+
+                            Deployed Tasks
+
+                        </span>
+                    </Link>
+                    <Link to='/inProgressTask' className="px-6 py-4 font-semibold text-lg text-gray-300 hover:text-gray-700 cursor-pointer flex justify-start items-center gap-2">
+                        < MdOutlineAccessTimeFilled className="text-2xl" />
+                        <span className='sm:block hidden'>
+
+                            Deferred Tasks
+
+                        </span>
+                    </Link>
+
                     <Link to='/addTask' className="px-6 py-4 font-semibold text-lg text-gray-300 hover:text-gray-700 cursor-pointer flex justify-start items-center gap-2">
                         <MdAddTask className="text-2xl" />
                         <span className='sm:block hidden'>
 
                             Add New Tasks
+
+                        </span>
+                    </Link>
+                    <Link to='/addTask' className="px-6 py-4 font-semibold text-lg text-gray-300 hover:text-gray-700 cursor-pointer flex justify-start items-center gap-2">
+                        < MdQueryStats className="text-2xl" />
+                        <span className='sm:block hidden'>
+
+                            Task Stats
 
                         </span>
                     </Link>
