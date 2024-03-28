@@ -77,7 +77,7 @@ const AllTasks = () => {
                 </div>
             </div>
             {filteredTasks.length > 0 ? (
-                <div className="flex flex-wrap gap-y-4 gap-x-14  overflow-y-scroll h-[80vh]">
+                <div className="flex flex-wrap gap-y-4 gap-x-14 justify-center  overflow-y-scroll mt-5 h-[50vh] sm:h-[80vh]">
                     {filteredTasks.map(task => (
                         <TaskCard
                             key={task.id}
