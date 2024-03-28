@@ -24,19 +24,19 @@ const AllTasks = () => {
         <div className="w-[70%] mx-auto">
             <div className="mt-10">
                 <h1 className="text-3xl font-bold my-8 text-center">Task Board</h1>
-                <div className="flex justify-between items-center flex-col sm:flex-row gap-4">
-                    <div className='flex flex-col sm:flex-row gap-2'>
-                        <div className='flex flex-col sm:flex-row gap-2 items-center'>
+                <div className="flex justify-between items-center sm:flex-row gap-4 flex-col-reverse">
+                    <div className='flex  flex-col sm:flex-row gap-2'>
+                        <div className='flex  flex-col sm:flex-row gap-2 items-center'>
                             <p className='font-bold text-xl text-blue-400'>Filter </p>
-                            <div className='flex justify-center gap-[10px] sm:gap-2 flex-row items-center'>
+                            <div className='flex justify-center gap-[10px] sm:gap-2 flex-col sm:flex-row items-center'>
                                 <input
-                                    className='bg-gray-200 p-2 rounded-xl'
+                                    className='bg-gray-200 p-2 rounded-xl w-[60vw] sm:w-auto appearance-none'
                                     type="date"
                                     value={startDate ? startDate.toISOString().split('T')[0] : ''}
                                     onChange={(e) => setStartDate(new Date(e.target.value))}
                                 />
                                 <input
-                                    className='bg-gray-200 p-2 rounded-xl'
+                                    className='bg-gray-200 p-2 rounded-xl w-[60vw] sm:w-auto appearance-none'
                                     type="date"
                                     value={endDate ? endDate.toISOString().split('T')[0] : ''}
                                     onChange={(e) => setEndDate(new Date(e.target.value))}
@@ -92,7 +92,7 @@ const AllTasks = () => {
                     ))}
                 </div>
             ) : (
-                <div className="text-center mt-[30vh]">
+                <div className="text-center mt-[17vh] sm:mt-[30vh]">
                     <p>No tasks found. <Link to="/addTask" className="text-blue-500">Add a new task</Link></p>
                 </div>
             )}

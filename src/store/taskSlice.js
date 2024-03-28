@@ -11,8 +11,9 @@ const taskSlice = createSlice({
         id: Date.now(),
         title: action.payload.title,
         description: action.payload.description,
-        startDate: action.payload.startDate || new Date().toISOString(),
-        endDate: action.payload.endDate || null,
+        startDate:
+          action.payload.startDate.toISOString(),
+        endDate: action.payload.endDate.toISOString(),
         status: action.payload.status || "Pending",
         assignee: action.payload.assignee || "",
         priority: action.payload.priority || "",
