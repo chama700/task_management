@@ -19,6 +19,10 @@
     {
       "src": "/inProgressTask",
       "dest": "/"
+    },
+    {
+      "src": "/statsTask",
+      "dest": "/"
     }
   ]
 }

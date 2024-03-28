@@ -71,7 +71,7 @@ const Sidebar = () => {
 
                         </span>
                     </Link>
-                    <Link to='/addTask' className="px-6 py-4 font-semibold text-lg text-gray-300 hover:text-gray-700 cursor-pointer flex justify-start items-center gap-2">
+                    <Link to='/statsTask' className="px-6 py-4 font-semibold text-lg text-gray-300 hover:text-gray-700 cursor-pointer flex justify-start items-center gap-2">
                         < MdQueryStats className="text-2xl" />
                         <span className='sm:block hidden'>
 

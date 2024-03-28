@@ -24,13 +24,6 @@ const AddTask = () => {
         });
     };
 
-    const handleStartDateChange = (date) => {
-        setFormData({
-            ...formData,
-            startDate: date
-        });
-    };
-
     const handleEndDateChange = (date) => {
         setFormData({
             ...formData,
@@ -38,21 +31,37 @@ const AddTask = () => {
         });
     };
 
+    const handleStartDateChange = (date) => {
+        // Check if date is a valid Date object
+        if (date instanceof Date && !isNaN(date)) {
+            setFormData({
+                ...formData,
+                startDate: date
+            });
+        }
+    };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
-        dispatch(addTask(formData));
+        const serializableFormData = {
+            ...formData,
+            startDate: formData.startDate.toISOString(), 
+            endDate: formData.endDate ? formData.endDate.toISOString() : null 
+        };
+        console.log(serializableFormData);
+        dispatch(addTask(serializableFormData));
         setFormData({
             title: '',
             description: '',
-            startDate: new Date().toLocaleDateString(),
+            startDate: new Date(),
             endDate: null,
             status: 'Pending',
             assignee: '',
             priority: ''
         });
     };
+
 
     return (
         <div className="w-[70%] mx-auto">

@@ -12,8 +12,8 @@ const taskSlice = createSlice({
         title: action.payload.title,
         description: action.payload.description,
         startDate:
-          action.payload.startDate.toISOString(),
-        endDate: action.payload.endDate.toISOString(),
+          action.payload.startDate,
+        endDate: action.payload.endDate,
         status: action.payload.status || "Pending",
         assignee: action.payload.assignee || "",
         priority: action.payload.priority || "",
@@ -29,9 +29,9 @@ const taskSlice = createSlice({
       if (task) {
         task.completed = !task.completed;
         if (task.completed) {
-          task.endDate = new Date().toISOString(); // Set end date on completion
+          task.endDate = new Date().toISOString(); 
         } else {
-          task.endDate = null; // Clear end date when uncompleted
+          task.endDate = null; 
         }
       }
     },
