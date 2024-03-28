@@ -1,0 +1,24 @@
+{
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/"
+    },
+    {
+      "src": "/addTask",
+      "dest": "/"
+    },
+    {
+      "src": "/allTask",
+      "dest": "/"
+    },
+    {
+      "src": "/completeTask",
+      "dest": "/"
+    },
+    {
+      "src": "/inProgressTask",
+      "dest": "/"
+    }
+  ]
+}

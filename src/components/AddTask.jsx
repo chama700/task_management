@@ -13,7 +13,7 @@ const AddTask = () => {
         endDate: null,
         status: 'Pending',
         assignee: '',
-        priority: ''
+        priority: 'P0'
     });
 
     const handleChange = (e) => {
@@ -41,11 +41,12 @@ const AddTask = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(formData);
         dispatch(addTask(formData));
         setFormData({
             title: '',
             description: '',
-            startDate: new Date(),
+            startDate: new Date().toLocaleDateString(),
             endDate: null,
             status: 'Pending',
             assignee: '',
