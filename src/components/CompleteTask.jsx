@@ -28,7 +28,7 @@ const CompleteTask = () => {
                         ))}
                     </div>
                 ) : (<div className="text-center mt-[17vh] sm:mt-[30vh]">
-                    <p>No tasks found. <Link to="/addTask" className="text-blue-500">Add a new task</Link></p>
+                    <p>No tasks found. <Link to="/addTask" className="text-indigo-500">Add a new task</Link></p>
                 </div >)
             }
 

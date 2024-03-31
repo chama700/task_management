@@ -160,7 +160,7 @@ const AddTask = () => {
                                 </select>
                             </div>
                         </div>
-                        <button type='submit' className='w-full p-3 bg-blue-500 rounded-lg text-center text-white hover:bg-blue-300'>Add</button>
+                        <button type='submit' className='w-full p-3 bg-indigo-500 rounded-lg text-center text-white hover:bg-indigo-300'>Add</button>
                     </form>
                 </div>
             </div>
