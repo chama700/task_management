@@ -8,6 +8,9 @@ import AllTasks from './components/AllTasks';
 import CompleteTask from './components/CompleteTask';
 import InProgressTask from './components/InProgressTask';
 import Dashboard from './components/Dashboard';
+import PendingTask from './components/PendingTask';
+import Deployed from './components/Deployed';
+import Deferred from './components/Deferred';
 
 const App = () => {
 
@@ -20,6 +23,9 @@ const App = () => {
         <Route path="/addTask" element={<AddTask />} />
         <Route path="/allTask" element={<AllTasks />} />
         <Route path="/completeTask" element={<CompleteTask />} />
+        <Route path="/pendingTask" element={<PendingTask />} />
+        <Route path="/deployedTask" element={<Deployed />} />
+        <Route path="/deferredTask" element={<Deferred />} />
         <Route path="/inProgressTask" element={<InProgressTask />} />
         <Route path="/statsTask" element={<Dashboard />} />
       </Routes>

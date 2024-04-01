@@ -37,7 +37,7 @@ const AllTasks = () => {
                     </div>
                     <div className="text-indigo-500 font-semibold">All Task ({filteredTasks.length})</div>
                 </div>
-                <div className={`${toggle ? 'flex' : 'hidden'} justify-between items-center sm:flex-row gap-4 flex-col-reverse`}>
+                <div className={`${toggle ? 'flex' : 'hidden'} mt-10 justify-between items-center sm:flex-row gap-4 flex-col-reverse`}>
                     <div className="flex  flex-col sm:flex-row gap-2">
                         <div className="flex  flex-col sm:flex-row gap-2 items-center">
                             <p className="font-bold text-xl text-indigo-500">Filter </p>
@@ -87,7 +87,7 @@ const AllTasks = () => {
                 </div>
             </div>
             {filteredTasks.length > 0 ? (
-                <div className="flex flex-wrap gap-y-4 gap-x-14 justify-center  overflow-y-scroll mt-5 h-[50vh] sm:h-[80vh]">
+                <div className="flex flex-wrap gap-y-4 gap-x-14 justify-center  overflow-y-scroll mt-5 h-[80vh] sm:h-[80vh]">
                     {filteredTasks.map((task) => (
                         <TaskCard
                             key={task.id}
