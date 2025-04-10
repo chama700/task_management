@@ -1,8 +1,29 @@
-# React + Vite
+# TaskManager - Application de Gestion de Tâches
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Install Dependencies:**
+   ```bash
+    npm install
+   ```
+**Run This Project:**
+   ```bash
+   npm run dev
+   ```
+**Run MongoDB:**
+  - cd backend/
+   ```bash
+   npm start
+   ```
+**stylish popup using library sweetalert2**
 
-Currently, two official plugins are available:
+npm install sweetalert2
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+import Swal from "sweetalert2";
+
+Sommaire
+
+- Introduction et Fonctionnalités Principales 
+- Système de Statuts et PrioritésTechnologies Utilisées 
+- Filtrage et Organisation 
+- Technologies Utilisées 
+- Système d'Authentification 
+- Popups et Notifications Visuelles

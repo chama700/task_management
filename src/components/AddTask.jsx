@@ -3,6 +3,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch } from "react-redux";
 import { addTask } from "../store/taskSlice";
+import axios from "../axiosConfig";
+import Swal from 'sweetalert2';
 
 const AddTask = () => {
     const dispatch = useDispatch();
@@ -32,7 +34,6 @@ const AddTask = () => {
     };
 
     const handleStartDateChange = (date) => {
-        // Check if date is a valid Date object
         if (date instanceof Date && !isNaN(date)) {
             setFormData({
                 ...formData,
@@ -41,31 +42,54 @@ const AddTask = () => {
         }
     };
 
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const serializableFormData = {
-            ...formData,
-            startDate: formData.startDate.toISOString(), 
-            endDate: formData.endDate ? formData.endDate.toISOString() : null 
-        };
-        console.log(serializableFormData);
-        dispatch(addTask(serializableFormData));
-        setFormData({
-            title: '',
-            description: '',
-            startDate: new Date(),
-            endDate: null,
-            status: 'Pending',
-            assignee: '',
-            priority: ''
+    const showAlert = (title, text, icon) => {
+        Swal.fire({
+            title,
+            text,
+            icon,
+            confirmButtonColor: "#6366f1",
+            background: "#1a1a2e",
+            color: "#fff",
+            customClass: {
+                popup: "rounded-lg shadow-lg",
+                title: "text-lg font-bold",
+            },
         });
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const serializableFormData = {
+            ...formData,
+            startDate: formData.startDate.toISOString(),
+            endDate: formData.endDate ? formData.endDate.toISOString() : null
+        };
+
+        try {
+            const response = await axios.post('/tasks', serializableFormData);
+            dispatch(addTask(serializableFormData));
+
+            setFormData({
+                title: '',
+                description: '',
+                startDate: new Date(),
+                endDate: null,
+                status: 'Pending',
+                assignee: '',
+                priority: 'P0'
+            });
+
+            showAlert("Task Added", "The task was added successfully.", "success");
+        } catch (error) {
+            console.error('Error adding task:', error);
+            showAlert("Error", "An error occurred while adding the task.", "error");
+        }
+    };
 
     return (
         <div className="w-[70%] mx-auto">
-            <div className=''>
+            <div>
                 <h1 className="text-3xl font-bold my-8 text-center">Add New Task</h1>
                 <div className='grid place-items-center'>
                     <form className="w-full mt-12 sm:mt-0 max-w-lg" onSubmit={handleSubmit}>
@@ -109,7 +133,7 @@ const AddTask = () => {
                                     selected={formData.startDate}
                                     onChange={handleStartDateChange}
                                     dateFormat="dd/MM/yyyy"
-                                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    className="appearance-none block w-[280px] sm:w-[245px] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 />
                             </div>
                             <div className="w-full md:w-1/2 px-3 mb-2 sm:mb-6 md:mb-0">
@@ -120,7 +144,7 @@ const AddTask = () => {
                                     selected={formData.endDate}
                                     onChange={handleEndDateChange}
                                     dateFormat="dd/MM/yyyy"
-                                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    className="appearance-none block w-[280px] sm:w-[245px] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 />
                             </div>
                         </div>
@@ -160,7 +184,7 @@ const AddTask = () => {
                                 </select>
                             </div>
                         </div>
-                        <button type='submit' className='w-full p-3 bg-indigo-500 rounded-lg text-center text-white hover:bg-indigo-300'>Add</button>
+                        <button type='submit' className='mt-8 w-full p-3 bg-indigo-500 rounded-lg text-center text-white hover:bg-indigo-300'>Add</button>
                     </form>
                 </div>
             </div>

@@ -1,7 +1,6 @@
-
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { toggleTaskCompleted } from '../store/taskSlice'
+import {removeTask, toggleTaskCompleted} from '../store/taskSlice'
 import { useState } from "react";
 
 const TaskCard = ({
@@ -45,6 +44,10 @@ const TaskCard = ({
         setComplete(true)
     };
 
+    const handleRemoveTask = () => {
+        dispatch(removeTask(id));
+    };
+
     return (
         <div
             className={` flex flex-col rounded-xl justify-center gap-4 bg-white w-72 max-h-[370px] shadow-xl border`}
@@ -55,12 +58,12 @@ const TaskCard = ({
                     status
                 )} shadow-md h-45`}
             >
-                <h1 className="font-bold text-end pt-2 pr-3 text-sm">{`${priority}`}</h1>
-                <h1 className="font-bold text-center text-xl py-4 mb-5">{`${title}`}</h1>
+                <h1 className="anton-regular text-end pt-2 pr-3 text-sm">{`${priority}`}</h1>
+                <h1 className="font-bold text-center text-xl py-4 mb-5 ubuntu-bold">{`${title}`}</h1>
             </div>
             <div className="border-0 p-2 text-center">
-                <p className="font-semibold ">{`${description}`}</p>
-                <div className="flex justify-between text-sm font-semibold py-2 px-4">
+                <p className="poppins-light ">{`${description}`}</p>
+                <div className="flex justify-between mt-[5px] text-sm font-semibold py-2 px-4">
                     <div className="flex justify-center flex-col">
                         <p>Start Date</p>
                         <p className="font-light">{`${startDatee}`}</p>
@@ -72,7 +75,6 @@ const TaskCard = ({
                 </div>
             </div>
             <div className="footer p-3 flex items-center justify-between">
-                <p className="font-light text-xs block text-black">{`Puskar Roy`}</p>
                 <button
                     onClick={handleToggleCompleted}
                     type="button"
@@ -81,6 +83,13 @@ const TaskCard = ({
                         : `${getStatusColor(status)}`
                         }`}
                 > {complete ? 'Completed' : `${status}`}</button>
+                <button
+                    onClick={handleRemoveTask}
+                    type="button"
+                    className="bg-red-500 text-white py-2 px-4 rounded-lg shadow-md uppercase font-bold text-xs"
+                >
+                    Remove
+                </button>
             </div>
         </div>
     );
@@ -88,7 +97,7 @@ const TaskCard = ({
 
 
 TaskCard.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     startDate: PropTypes.string.isRequired,
